@@ -26,10 +26,21 @@ jobs:
      - run: npm test -- --coverage
        env:
          CI: true
+     - name: Upload test coverage
+       uses: actions/upload-artifact@v2
+       with:
+         name: code-coverage
+         path: coverage    
      - run: npm install -g surge
      - name: Build project
        if: github.event_name == 'push' #&& startsWith(github.ref, 'refs/tags')
-       run: npm run build    
+       run: npm run build  
+     - name: Upload build Folder
+       uses: actions/upload-artifact@v2
+       with:
+         name: build
+         path: build
+
      - name: Deploy to staging
        if: github.event_name == 'push'
        run: npx surge --project ./build --domain superb-hope.surge.sh
