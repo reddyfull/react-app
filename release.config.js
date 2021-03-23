@@ -2,13 +2,11 @@ module.exports = {
     branches: "master",
     repositoryUrl: "https://github.com/reddyfull/react-app",
     plugins: [
-        '@semantic-release/commit-analyzer', 
-        '@semantic-release/release-notes-generator', 
-        ['@semantic-release/github', {
-            assets: [
-                {path: "build.zip", label: "build"},
-                {coverage: "coverage.zip", label: "Coverage"}
-            ]
-        }]
-    ]
-}
+        "@semantic-release/commit-analyzer",
+        "@semantic-release/release-notes-generator",
+        ["@semantic-release/github", {
+          "assets": ["dist/**"]
+          }],
+        "@semantic-release/git"
+      ]
+}     
