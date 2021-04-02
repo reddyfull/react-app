@@ -8,11 +8,12 @@ inputs:
     default: Sri
 outputs:
   time:
-    description: 'The Greeting time'    
+    description: "The Greeting time"
 
 runs: 
   using: 'docker'
   image: 'Dockerfile'
-  #entrypoint:
+  # entrypoint:
   args:
+    -  ${{ inputs.who-to-greet }}
     
