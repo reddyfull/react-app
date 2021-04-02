@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const { GitHub } = require('@actions/github/lib/utils');
 
 try {
     const token = core.getInput('token');
@@ -7,7 +8,7 @@ try {
     const body = core.getInput('body');
     const assignees = core.getInput('assignees');
 
-    const octokit = new github.getOctokit(token);
+    const octokit = new github.GitHub(token);
 
    const response = octokit.issues.create({
         //owner: github.context.repo.owner,
